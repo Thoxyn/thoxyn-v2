@@ -6,4 +6,4 @@ This project is licensed under AGPL-3.0. The closed source version of this proje
 # Contribution Agreements
 We appreciate community contributions to code repositories open sourced by us. We have a Developer Certificate of Origin (DCO) that all developer must sign before pull requests or any other contributions to this codebase will be accepted. To sign, simply add  a similar line to the end of your commit:
 `Signed-off-by: John Doe <johndoe@example.com?`
-The DCO can be found (here)[dco.md]
+The DCO can be found [here](dco.md)
