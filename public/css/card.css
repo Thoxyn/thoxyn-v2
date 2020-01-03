@@ -1,0 +1,227 @@
+.card, .bigcard {
+    -webkit-box-shadow: 0px 0px 38px -16px rgba(0,0,0,0.48);
+    -moz-box-shadow: 0px 0px 38px -16px rgba(0,0,0,0.48);
+    box-shadow: 0px 0px 38px -16px rgba(0,0,0,0.48);
+    background-color: white;
+    /*position: relative;*/
+}
+
+.pad {
+    padding: 10px;
+}
+
+.card .topic {
+    padding-top: 15px;
+    color: rgb(121, 121, 121);
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.card .cardbutton {
+		margin-left: 15px;
+}
+
+.card .title {
+    padding-top: 0px;
+    font-size: 22px;
+    margin-top: -35px;
+}
+
+.card .content {
+    font-size: 16px;
+    margin-top: -40px;
+}
+
+.card .stats {
+    font-size: 16px;
+    margin-top: -10px;
+}
+
+.post {
+    width: auto;
+    height: auto;
+    overflow: hidden;
+}
+
+.post input {
+    margin-left: 15px;
+}
+
+.post h3 {
+	padding-left: 15px;
+	margin-top: 15px;
+}
+
+.post textarea {
+	box-sizing: border-box;
+	width: 95%;
+	margin-left: 15px;
+	margin-right: 15px;
+}
+
+.post .notd {
+    text-decoration: none;
+}
+
+.post:hover {
+    cursor: pointer;
+}
+
+.post p {
+    padding-left: 15px;
+}
+
+div.bigcard img.thumbnail {
+    top: 0;
+    left: 0;
+    height: 420px;
+    float: left;
+    position: relative;
+    margin-right: 15px;
+}
+
+div.card img.thumbnail {
+    top: 0;
+    left: 0;
+    height: 275px;
+    float: left;
+    position: relative;
+    margin-right: 15px;
+}
+
+@media only screen and (max-width: 1200px) {
+    div.card img.thumbnail {
+        top: 0;
+        width: 100%;
+        height: auto;
+        float: left;
+        position: relative;
+        margin-right: 15px;
+        margin-bottom: 15px;
+    }
+
+    div.bigcard img.thumbnail {
+        top: 0;
+        width: 100%;
+        height: auto;
+        float: left;
+        position: relative;
+        margin-right: 15px;
+        margin-bottom: 15px;
+    }
+}
+
+.post .bookmark {
+    float: right;
+}
+
+/* Big Card */
+.bigcard .topic {
+    padding-top: 25px;
+    color: rgb(121, 121, 121);
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.bigcard .title {
+    font-size: 36px;
+    margin-top: -35px;
+}
+
+.bigcard .content {
+    font-size: 16px;
+    margin-top: -40px;
+    padding-left: 15px;
+}
+
+.bigcard .stats {
+    font-size: 16px;
+    margin-top: -10px;
+}
+
+.bigpost {
+    overflow: hidden;
+    width: auto;
+    height: auto;
+}
+
+.bigpost .notd {
+    text-decoration: none;
+}
+
+.bigpost:hover {
+    cursor: pointer;
+}
+
+.bigpost p {
+		padding-left: 15px;
+		padding-right: 15px;
+}
+
+/*.bigpost .thumbnail {
+    float: left;
+    width: 640px;
+    height: auto;
+    margin-right: 15px;
+}*/
+
+.bigpost .author {
+    padding-bottom: 50px;
+}
+
+div.smallpost img.thumbnail {
+    top: 0;
+    left: 0;
+    height: 170px;
+    float: left;
+    position: relative;
+    margin-right: 15px;
+}
+
+.smallpost {
+    width: auto;
+    height: auto;
+    overflow: hidden;
+}
+
+.smallpost .notd {
+    text-decoration: none;
+}
+
+.smallpost:hover {
+    cursor: pointer;
+}
+
+.smallpost p {
+    padding-left: 15px;
+}
+
+.npost {
+    width: auto;
+    height: auto;
+    overflow: hidden;
+}
+
+.npost input {
+    margin-left: 15px;
+}
+
+.npost h3 {
+	padding-left: 15px;
+	margin-top: 15px;
+}
+
+.npost textarea {
+	box-sizing: border-box;
+	width: 95%;
+	margin-left: 15px;
+	margin-right: 15px;
+}
+
+.npost .notd {
+    text-decoration: none;
+}
+
+.npost p {
+    padding-left: 15px;
+}

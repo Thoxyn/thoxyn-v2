@@ -1,0 +1,19 @@
+<comments>
+  <div class="container">
+    <div class="row" each="{comment in comments}">
+      <div class="card smallpost">
+        <img class="thumbnail" src="{comment.authorimg}" />
+        <p class="topic">COMMENT</p>
+        <p class="title">{comment.author}</p>
+        <br>
+        <p class="content">{comment.content}</p>
+        <p>Written by <a class="notd" href="/profile/{comment.uid}">{comment.author}</a>, <i>{comment.date}</i></p>
+      </div>
+      <br><br>
+    </div>
+  </div>
+  
+  <script>
+    this.comments = comments
+  </script>
+</comments>

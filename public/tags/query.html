@@ -1,0 +1,33 @@
+<query>
+  <div class="container">
+    <div class="row" each="{post in posts}">
+      <div class="card post" onclick="window.location='/post/{post.uid}'">
+        <img class="thumbnail" src="{post.aesthetic.thumbnail}" />
+        <p class="topic">{post.content.topic}</p>
+        <p class="title">{post.content.title}</p>
+        <br>
+        <p class="content">{post.content.html}</p>
+        <p class="stats">{post.external.likers.length} <i class="fas fa-angle-double-up"></i> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{post.external.comments.length} <i class="far fa-comment-alt"></i> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{post.external.views} <i class="fa fa-eye" aria-hidden="true"></i></p>
+        <p>Written by <a class="notd" href="/profile/{post.author.authoruid}">{post.author.name}</a>, <i>{post.aesthetic.date}</i></p>
+      </div>
+      <br><br>
+    </div>
+
+    <div class="row" each="{account in accounts}">
+      <div class="card smallpost" onclick="window.location = '/profile/{account.uid}'">
+        <img class="thumbnail" src="{account.personal.pfp}">
+        <p class="topic">ACCOUNT</p>
+        <p class="title">{account.personal.name}</p>
+        <br>
+        <p class="content">{account.thoxyn.description}</p>
+        <p>Joined {account.thoxyn.joined}</i></p>
+      </div>
+      <br><br>
+    </div>
+  </div>
+  
+  <script>
+    self.posts = postdata
+    self.accounts = accountdata
+  </script>
+</query>

@@ -1,0 +1,11 @@
+<feed>
+  <div class="card post" onclick="window.location='{opts.baseurl}/post/{opts.uid}'">
+    <img class="thumbnail" src="{opts.thumbnail}" />
+    <p class="topic">{opts.topic}</p>
+    <p class="title">{opts.title}</p>
+    <br>
+    <p class="content">{opts.html}</p>
+    <p class="stats">{opts.likers.length} <i class="fas fa-angle-double-up"></i> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{opts.comments.length} <i class="far fa-comment-alt"></i> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{opts.views} <i class="fa fa-eye" aria-hidden="true"></i></p>
+    <p>Written by <a class="notd" href="{opts.baseUrl}/profile/{opts.authoruid}">{opts.authorname}</a>, <i>{opts.date}</i></p>
+  </div>
+</feed>

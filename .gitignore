@@ -1,0 +1,8 @@
+node_modules/
+thoxyn-v2.zip
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
+# envlist once client key has been put in
+*.thconfig

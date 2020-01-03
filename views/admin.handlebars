@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8">
+
+        <title>Write - Thoxyn</title>
+
+        <link rel="stylesheet" href="./css/main.css">
+        <link rel="stylesheet" href="./css/skeleton/skeleton.css">
+        <link rel="stylesheet" href="./css/skeleton/normalize.css">      
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+        
+        <link rel="shortcut icon" type="image/png" href="/favicon.ico"/>
+
+        <script src="/js/jquery.js"></script> 
+        <script src="https://cdn.ckeditor.com/4.10.0/standard/ckeditor.js"></script>
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+      </head>
+
+    <body>
+      <div class="card" id="general">
+        <ul class="nav">
+          <li><a href="/discover"><i class="fas fa-graduation-cap"></i> Discover</a></li>   
+          <li><a href="/home"><i class="fas fa-home"></i> Home</a></li>   
+          <li><a href="/write"><i class="fas fa-chalkboard"></i> Write</a></li>
+          <li><a href="/signin"><i class="fas fa-sign-in-alt"></i> Sign In</a></li>
+          <li><a href="/search"><i class="fas fa-search"></i> Search</a></li>
+        </ul>
+        
+        <br>
+      </div>
+      <div class="card" id="personal">
+        <ul class="nav">
+          <li><a href="/"><i class="fas fa-home"></i> Home</a></li>   
+          <li><a href="/discover"><i class="fas fa-graduation-cap"></i> Discover</a></li>
+          <li><a href="/search"><i class="fas fa-search"></i> Search</a></li>   
+          <li><a href="/write"><i class="fas fa-chalkboard"></i> Write</a></li>
+          <li><a href="/settings"><i class="fas fa-sliders-h"></i> Settings</a></li>
+          <li><a href="/profile/{{muid}}"><i class="fas fa-user-alt"></i> Profile</a></li>
+          <li><a href="/logout"><i class="fas fa-sign-out-alt"></i> Sign Out</a></li>
+        </ul>
+
+        <br>
+      </div>
+      <br>
+      <div class="container">
+        <div class="row">
+          <!--input class="u-full-width" name="title" type="text" placeholder="Title" id="title">
+          <br><br>
+          <input name="cover" id="cover" type="file" />
+          <label for="cover">Upload a Thumbnail</label>
+          <br>
+          <textarea rows="7" cols="7" class="u-full-width" placeholder="Content" name="article" id="editor"></textarea>
+          <br><br>
+          <input type="checkbox" id="private" name="private" value="true"> Private<br>
+          <input type="checkbox" id="dcomments" name="dcomments" value="true"> Disable Comments<br>
+          <br>
+          <select class="u-full-width" id="topic" name="topic">
+            <option>Ambiguous</option>
+            <option>Technology</option>
+            <option>Story</option>
+            <option>Politics</option>
+            <option>Tutorial</option>
+            <option>Awareness</option>
+            <option>Science</option>
+            <option>Math</option>
+            <option>Philosophy</option>
+            <option>History</option>
+            <option>Sports</option>
+            <option>Wellness and Health</option>
+            <option>Nutrition</option>
+          </select>
+          <br><br>
+          <input class="button-primary" type="button" value="submit" onclick="submit()"-->
+          <br><br>
+          <h1 class="center">Admin Announcements</h1>
+          <form ref='uploadForm' encType="multipart/form-data" class="" action="/announce" method="post">
+            <input class="u-full-width" name="title" type="text" placeholder="Subject" id="title">
+            <br><br>
+            <textarea rows="7" cols="7" class="u-full-width" placeholder="Content" name="article" id="editor"></textarea>
+            <br><br>
+            <input type="submit" class="button-primary" value="Announce">
+          </form>
+          <br><br>
+          <h1>Weekly Announcement</h1>
+          <button onclick="deploy()" class="button-primary">Send Weekly Updates</button>
+          <br><br>
+        </div>
+      </div>
+
+      <script>
+          CKEDITOR.replace('article');
+          ClassicEditor
+            .create( document.querySelector( '#editor' ) )
+            .then( editor => {
+              //console.log( editor );
+            } )
+            .catch( error => {
+              //console.error( error );
+            } );
+
+            function deploy() {
+              $.ajax({
+                  url: "/deploy/weekly",
+                  type: "GET",
+                  dataType: "json",
+                  contentType: "application/json; charset=utf-8",
+                  success: function(data) {
+                    if(data.success) {
+                      alert(data.result)
+                    }
+                  }
+              });
+            }
+        </script>
+    </body>
+</html>

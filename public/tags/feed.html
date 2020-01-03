@@ -1,0 +1,47 @@
+<feed>
+  <div class="container">
+    <div class="row" each="{post in posts}">
+      <div class="card post" onclick="window.location='{post.baseurl}/post/{post.uid}'">
+        <img class="thumbnail" src="{post.aesthetic.thumbnail}" />
+        <p class="topic">{post.content.topic}</p>
+        <p class="title">{post.content.title}</p>
+        <br>
+        <p class="content">{post.content.html}</p>
+        <p class="stats">{post.external.likers.length} <i class="fas fa-angle-double-up"></i> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{post.external.comments.length} <i class="far fa-comment-alt"></i> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{post.external.views} <i class="fa fa-eye" aria-hidden="true"></i></p>
+        <p>Written by <a class="notd" href="{post.baseUrl}/profile/{post.author.authoruid}">{post.author.name}</a>, <i>{post.aesthetic.date}</i></p>
+      </div>
+      <br><br>
+    </div>
+  </div>
+  
+  <script>
+    var self = this
+    this.posts = []
+    this.on('mount', function (){
+      self.posts = self.allTodos()
+      self.update()
+    })
+  
+    var self = this
+    allTodos() {
+      $("#loading").show();
+      var url = opts.location; //random adress
+
+      $.ajax({
+          url: url,
+          type: "GET",
+          dataType: "json",
+          contentType: "application/json; charset=utf-8",
+          success: function(data) {
+            $("#loading").hide();
+            self.posts = data
+            self.update()
+            
+            $("img").on("error", function() {
+              $(this).hide()
+            })
+          }
+      });
+    }
+  </script>
+</feed>

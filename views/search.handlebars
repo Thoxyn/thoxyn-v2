@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8">
+
+        <title>Search - Thoxyn</title>
+
+        <link rel="stylesheet" href="./css/main.css">
+        <link rel="stylesheet" href="./css/skeleton/skeleton.css">
+        <link rel="stylesheet" href="./css/skeleton/normalize.css">      
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+        
+        <link rel="shortcut icon" type="image/png" href="/favicon.ico"/>
+
+        <script src="https://cdn.ckeditor.com/4.10.0/standard/ckeditor.js"></script> 
+        <script type="text/javascript" src="/js/jquery.js"></script>
+
+        <script src="js/riot_compiler.min.js"></script>`
+      </head>
+
+    <body>
+      <div class="card" id="general">
+        <ul class="nav">
+          <li><a href="/discover"><i class="fas fa-graduation-cap"></i> Discover</a></li>   
+          <li><a href="/home"><i class="fas fa-home"></i> Home</a></li>   
+          <li><a href="/write"><i class="fas fa-chalkboard"></i> Write</a></li>
+          <li><a href="/signin"><i class="fas fa-sign-in-alt"></i> Sign In</a></li>
+          <li><a href="/search"><i class="fas fa-search"></i> Search</a></li>
+        </ul>
+        
+        <br>
+      </div>
+      <div class="card" id="personal">
+        <ul class="nav">
+          <li><a href="/"><i class="fas fa-home"></i> Home</a></li>   
+          <li><a href="/discover"><i class="fas fa-graduation-cap"></i> Discover</a></li>
+          <li><a href="/search"><i class="fas fa-search"></i> Search</a></li>   
+          <li><a href="/write"><i class="fas fa-chalkboard"></i> Write</a></li>
+          <li><a href="/settings"><i class="fas fa-sliders-h"></i> Settings</a></li>
+          <li><a href="/profile/{{muid}}"><i class="fas fa-user-alt"></i> Profile</a></li>
+          <li><a href="/logout"><i class="fas fa-sign-out-alt"></i> Sign Out</a></li>
+        </ul>
+
+        <br>
+      </div>
+      <br>
+      <div class="container">
+        <div class="row">
+          <div class="card">
+            <div class="pad">
+              <h1><i class="fas fa-search"></i> Search for content</h1>
+              <h6>Type keywords and view live results.</h6>
+              <select class="u-full-width" id="type" name="type" style="width: 50%;">
+                <option value="0">Posts</option>
+                <option value="1">Accounts</option>
+              </select>
+              <br><br>
+              <input class="test u-full-width" type="text" placeholder="Search Keywords" id="search">
+              <!--button onclick="search();" class="btn" style="width: 19%; float: right;"><i class="fas fa-search"></i> Search</button-->
+            </div>
+          </div>
+        </div>
+      </div>
+      <br><br>
+      <div id="loading" class="spinner">
+        <div class="rect1"></div>
+        <div class="rect2"></div>
+        <div class="rect3"></div>
+        <div class="rect4"></div>
+        <div class="rect5"></div>
+      </div>
+      <query></query>
+
+      <script>
+        let app = JSON.parse("{{app}}")
+
+        let muid = "{{muid}}"
+
+        let postdata = []
+
+        var typingTimer;                //timer identifier
+        var doneTypingInterval = 700;  //time in ms, 5 second for example
+        var $input = $('#search');
+
+        //on keyup, start the countdown
+        $input.on('keyup', function () {
+          clearTimeout(typingTimer);
+          typingTimer = setTimeout(doneTyping, doneTypingInterval);
+        });
+
+        //on keydown, clear the countdown 
+        $input.on('keydown', function () {
+          clearTimeout(typingTimer);
+        });
+
+        $("#type").change(function() {
+          doneTyping()
+        });
+
+        //user is "finished typing," do something
+        function doneTyping() {
+          $('#loading').show()
+          query = $("#search").val()
+
+          let type = $('#type').val()
+
+          if(type == 0) {
+            $.post("/postquery", { query: query })
+              .done(function(data) {
+                accountdata = []
+                postdata = data
+                $('#loading').hide()
+
+                riot.mount('query', {})
+              }
+            )
+          } else {
+            $.post("/accountquery", { query: query })
+              .done(function(data) {
+                postdata = []
+                accountdata = data
+                $('#loading').hide()
+
+                riot.mount('query', {})
+              }
+            )
+          }
+        }
+
+        $('#loading').hide()
+      </script>
+
+      <script type="riot/tag" src="/tags/query.html">
+      </script>
+
+      <script type="text/javascript" src="/js/navigation.js">
+      </script>
+    </body>
+</html>

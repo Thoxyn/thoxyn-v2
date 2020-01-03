@@ -1,0 +1,101 @@
+@import url("./navigation.css");
+@import url("./card.css");
+@import url("./loader.css");
+@import url("./post.css");
+@import url("./modal.css");
+
+body {
+    font-family: "Times New Roman", Times, serif;
+    background-color: snow;
+}
+
+.summary {
+    width: 47%;
+    float: right;
+    position: relative;
+    margin-top: 50px;
+}
+
+.acc-preview {
+    width: 47%;
+    float: left;
+    position: relative;
+    margin-top: 50px;
+}
+
+#personal {
+    display: none;
+}
+
+#general {
+    display: none;
+}
+
+.btn {
+    color: black;
+    padding: 5px;
+    border: 1.5px solid darkgray;
+    border-radius: 5px;
+    background-color: white;
+    text-decoration: none;
+    font-size: 24px;
+    /*position: absolute;*/
+}
+
+.smallbtn {
+    color: black;
+    padding: 5px;
+    border: 1.5px solid darkgray;
+    border-radius: 5px;
+    background-color: white;
+    text-decoration: none;
+    font-size: 16px;
+    /*position: absolute;*/
+}
+
+.btn:hover {
+    color: black;
+    cursor: pointer;
+    border: 1.5px solid gray;
+}
+
+.break {
+    margin-top: -50px;
+}
+
+::-webkit-file-upload-button {
+    color: black;
+    padding: 5px;
+    border: 1.5px solid darkgray;
+    border-radius: 5px;
+    /*background-color: white;*/
+    width: 15%;
+}
+
+::-webkit-file-upload-button:focus,
+::-webkit-file-upload-button:hover {
+    color: black;
+    cursor: pointer;
+    border: 1.5px solid gray;
+}
+
+.center {
+  text-align: center;
+}
+
+.profile-cover {
+    width: 50%;
+	height: auto;
+    border-top-left-radius: 50% 50%;
+    border-top-right-radius: 50% 50%;
+    border-bottom-right-radius: 50% 50%;
+    border-bottom-left-radius: 50% 50%;
+}
+
+.fifty {
+    width: 50%;
+}
+
+.sfive {
+    width: 75%;
+}

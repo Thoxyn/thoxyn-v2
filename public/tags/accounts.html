@@ -1,0 +1,44 @@
+<accounts>
+	<div class="container">
+		<div class="row" each="{account in accounts}">
+			<div class="card smallpost" onclick="window.location = '/profile/{account.uid}'">
+				<img class="thumbnail" src="{account.personal.pfp}">
+				<p class="topic">ACCOUNT • AI RECOMMENDED</p>
+				<p class="title">{account.personal.name}</p>
+				<br>
+				<p class="content">{account.thoxyn.description}</p>
+				<p>Joined {account.thoxyn.joined}</i></p>
+			</div>
+			<br><br>
+		</div>
+	</div>
+	
+	<script>
+	  var self = this
+    this.posts = []
+    this.on('mount', function (){
+      self.posts = self.allTodos()
+      self.update()
+    })
+  
+    var self = this
+    allTodos() {
+      var url = opts.location; //random adress
+
+      $.ajax({
+          url: url,
+          type: "GET",
+          dataType: "json",
+          contentType: "application/json; charset=utf-8",
+          success: function(data) {
+            self.accounts = data
+						self.update()
+						
+						$("img").on("error", function() {
+              $(this).hide()
+            })
+          }
+      });
+    }
+	</script>
+</accounts>

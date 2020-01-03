@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8">
+
+        <title>Edit {{title}}</title>
+
+        <link rel="stylesheet" href="/css/main.css">
+        <link rel="stylesheet" href="/css/skeleton/skeleton.css">
+        <link rel="stylesheet" href="/css/skeleton/normalize.css">      
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+        
+        <link rel="shortcut icon" type="image/png" href="/favicon.ico"/>
+
+        <script src="/js/jquery.js"></script> 
+        <script src="https://cdn.ckeditor.com/4.10.0/standard/ckeditor.js"></script>
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+      </head>
+
+    <body>
+      <div class="card" id="general">
+        <ul class="nav">
+          <li><a href="/discover"><i class="fas fa-graduation-cap"></i> Discover</a></li>   
+          <li><a href="/home"><i class="fas fa-home"></i> Home</a></li>   
+          <li><a href="/write"><i class="fas fa-chalkboard"></i> Write</a></li>
+          <li><a href="/signin"><i class="fas fa-sign-in-alt"></i> Sign In</a></li>
+          <li><a href="/search"><i class="fas fa-search"></i> Search</a></li>
+        </ul>
+        
+        <br>
+      </div>
+      <div class="card" id="personal">
+        <ul class="nav">
+          <li><a href="/"><i class="fas fa-home"></i> Home</a></li>   
+          <li><a href="/discover"><i class="fas fa-graduation-cap"></i> Discover</a></li>
+          <li><a href="/search"><i class="fas fa-search"></i> Search</a></li>   
+          <li><a href="/write"><i class="fas fa-chalkboard"></i> Write</a></li>
+          <li><a href="/settings"><i class="fas fa-sliders-h"></i> Settings</a></li>
+          <li><a href="/profile/{{muid}}"><i class="fas fa-user-alt"></i> Profile</a></li>
+          <li><a href="/logout"><i class="fas fa-sign-out-alt"></i> Sign Out</a></li>
+        </ul>
+
+        <br>
+      </div>
+      <br>
+      <div class="container">
+        <div class="row">
+          <!--input class="u-full-width" name="title" type="text" placeholder="Title" id="title">
+          <br><br>
+          <input name="cover" id="cover" type="file" />
+          <label for="cover">Upload a Thumbnail</label>
+          <br>
+          <textarea rows="7" cols="7" class="u-full-width" placeholder="Content" name="article" id="editor"></textarea>
+          <br><br>
+          <input type="checkbox" id="private" name="private" value="true"> Private<br>
+          <input type="checkbox" id="dcomments" name="dcomments" value="true"> Disable Comments<br>
+          <br>
+          <select class="u-full-width" id="topic" name="topic">
+            <option>Ambiguous</option>
+            <option>Technology</option>
+            <option>Story</option>
+            <option>Politics</option>
+            <option>Tutorial</option>
+            <option>Awareness</option>
+            <option>Science</option>
+            <option>Math</option>
+            <option>Philosophy</option>
+            <option>History</option>
+            <option>Sports</option>
+            <option>Wellness and Health</option>
+            <option>Nutrition</option>
+          </select>
+          <br><br>
+          <input class="button-primary" type="button" value="submit" onclick="submit()"-->
+          <br><br><br>
+          <p>You are modifying <a href="/post/{{uid}}">{{title}}</a>, which was written on {{date}}.</p>
+          <br>
+          <h1 class="center">Edit {{title}}</h1>
+          <form ref='uploadForm' encType="multipart/form-data" class="" action="/edit/:uid" method="post">
+            <input class="u-full-width" name="title" type="text" placeholder="Title" id="title">
+            <br><br><br>
+            <textarea rows="7" cols="7" class="u-full-width" placeholder="Content" name="article" id="editor"></textarea>
+            <br><br>
+            <h1>Topic</h1>
+            <select class="u-full-width" id="topic" name="topic">
+              <option>Ambiguous</option>
+              <option>Technology</option>
+              <option>Story</option>
+              <option>Politics</option>
+              <option>Tutorial</option>
+              <option>Awareness</option>
+              <option>Science</option>
+              <option>Math</option>
+              <option>Philosophy</option>
+              <option>History</option>
+              <option>Sports</option>
+              <option>Wellness and Health</option>
+              <option>Nutrition</option>
+            </select>
+            <br><br><br>
+            <a href="/delete/{{uid}}"><i class="fa fa-trash" aria-hidden="true"></i> Delete {{title}}</a>
+            <br><br>
+          </form>
+
+          <button onclick="submit()" class="button-primary"><i class="fa fa-paper-plane" aria-hidden="true"></i> Submit Edit</button>
+        </div>
+      </div>
+
+      <script>
+          CKEDITOR.replace('article');
+          ClassicEditor
+            .create( document.querySelector( '#editor' ) )
+            .then( editor => {
+              //console.log( editor );
+            } )
+            .catch( error => {
+              //console.error( error );
+            } );
+        </script>
+
+        <script>
+          let app = JSON.parse("{{app}}")
+
+          let postuid = "{{uid}}"
+          let muid = "{{muid}}"
+          let gid = "{{gid}}"
+
+          $.ajax({
+            url: "/serve/post/{{uid}}",
+            type: "GET",
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            success: function(data) {
+              var editor = CKEDITOR.instances['editor']
+				      editor.setData(data.content.html)
+
+              document.getElementById('title').value = data.content.title
+            }
+          })
+        </script>
+
+        <script>
+          function submit() {
+            let title = $('#title').val()
+            let content = CKEDITOR.instances['editor'].getData()
+            let selection = $('#topic').val()
+
+            $.post('/submitedit', { 
+              uid: postuid,
+              title: title,
+              content: content,
+              topic: selection
+					  }, (result) => {
+              window.location = result.redirect
+					  })
+          }
+        </script>
+
+      <script type="text/javascript" src="/js/navigation.js">
+      </script>
+    </body>
+</html>
