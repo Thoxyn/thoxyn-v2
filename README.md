@@ -1,5 +1,5 @@
 # Thoxyn V2
-Thoxyn Social Media platform to stimulate intellectual thought. Created by Dev Singh and Ben Beehler
+Thoxyn Social Media platform to stimulate intellectual thought. Created by Dev Singh and [Ben Beehler](https://github.com/BenBeehler)
 
 This project is licensed under AGPL-3.0.
 
