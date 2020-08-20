@@ -14,7 +14,7 @@
   "author": "Thoxyn Team",
   "license": "ISC",
   "dependencies": {
-    "bcrypt": "^3.0.5",
+    "bcrypt": "^5.0.0",
     "body-parser": "^1.18.3",
     "brain.js": "^1.6.1",
     "cluster": "^0.7.7",
