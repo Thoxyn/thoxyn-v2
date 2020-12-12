@@ -22,7 +22,7 @@
     "cookie-session": "^2.0.0-beta.3",
     "csurf": "^1.9.0",
     "express": "^4.16.4",
-    "express-fileupload": "^1.1.1-alpha.2",
+    "express-fileupload": "^1.1.9",
     "express-fileuploader": "0.0.7",
     "express-handlebars": "^3.0.0",
     "express-http-to-https": "^1.1.4",
